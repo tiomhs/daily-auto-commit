@@ -2,8 +2,8 @@ name: Daily Auto Commit (5x Daily)
 
 on:
   schedule:
-    # Berjalan setiap 5 jam sekali
-    - cron: '0 */5 * * *'
+    # Berjalan setiap 1 jam sekali
+    - cron: '0 */1 * * *'    
   workflow_dispatch:
 
 jobs:
