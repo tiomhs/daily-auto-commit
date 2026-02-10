@@ -1,26 +1,26 @@
-name: Daily Auto Commit (5x Daily)
+name: Ultra Active Bot
 
 on:
   schedule:
-    # Berjalan setiap 1 jam sekali
-    - cron: '0 */1 * * *'    
+    # Berjalan setiap 72 menit untuk mencapai ~20 commit per hari
+    - cron: '*/72 * * * *'
   workflow_dispatch:
 
 jobs:
-  auto-push:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
+      - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Update History File
+      - name: Make Changes
         run: |
-          echo "Activity Log: $(date)" > history.txt
+          echo "High Activity Log: $(date)" >> activity_log.txt
 
-      - name: Push Changes
+      - name: Commit & Push
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add history.txt
-          git commit -m "chore: automated activity update [skip ci]"
+          git add activity_log.txt
+          git commit -m "chore: system maintenance update [skip ci]"
           git push
